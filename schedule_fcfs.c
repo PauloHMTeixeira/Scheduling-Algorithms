@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define SIZE 100
+#define QUANTUM 10
 
 void schedule(char* name[],int array[],int tamanho);
 
@@ -52,9 +53,9 @@ void schedule(char* name[],int array_inteiros[],int tamanho){
     int turnaround = 0;
     int waiting = 0;
     int response = 0;
-    int turnarounnd_total = 0;
-    int waiting_total = 0;
-    int response_total = 0;
+    double turnaround_total = 0;
+    double waiting_total = 0;
+    double response_total = 0;
 
     for(int i=0;i<tamanho;i++){
         fprintf(fp,"[%s] %s %d %s\n",name[i/2],"for",array_inteiros[i+1],"units");
@@ -62,9 +63,9 @@ void schedule(char* name[],int array_inteiros[],int tamanho){
     }
     fprintf(fp,"\n%s\n","METRICS");
 
-    float media_turnaround = 0.0;
-    float media_waiting = 0.0;
-    float media_response = 0.0;
+    double media_turnaround = 0.0;
+    double media_waiting = 0.0;
+    double media_response = 0.0;
 
     for(int i=0; i<tamanho;i++){
         turnaround += array_inteiros[i+1];
@@ -75,14 +76,16 @@ void schedule(char* name[],int array_inteiros[],int tamanho){
         fprintf(fp,"%s %s %d\n","Response","time:",response);
         if(i!=tamanho-2){
             waiting = turnaround;
+            waiting_total += waiting;
             response = turnaround;
+            response_total += response;
         }
         i++;
     }
     
-    media_turnaround = turnaround/(tamanho/2);
-    media_waiting = waiting/(tamanho/2);
-    media_response = response/(tamanho/2);
+    media_turnaround = turnaround_total/(tamanho/2);
+    media_waiting = waiting_total/(tamanho/2);
+    media_response = response_total/(tamanho/2);
 
     fprintf(fp,"\n%s %s %s %s %f\n","Average","turnaround","time","=",media_turnaround);
     fprintf(fp,"%s %s %s %s %f\n","Average","waiting","time","=",media_waiting);
