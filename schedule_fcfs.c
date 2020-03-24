@@ -46,7 +46,7 @@ int main(int argc, char *argv[]){
 
 void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
     
-    FILE *fp = fopen("fcfs","a");
+    FILE *fp = fopen("fcfs.txt","a");
 
     fprintf(fp,"%s\n\n","EXECUTION BY FCFS");
 
