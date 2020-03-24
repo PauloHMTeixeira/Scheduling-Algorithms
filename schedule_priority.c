@@ -21,6 +21,8 @@ int main(int argc, char *argv[]){
     
     int priority;
     int burst;
+    int aux0, aux2;
+    char* aux1;
     in = fopen(argv[1],"r");
     
     int i = 0;
