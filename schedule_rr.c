@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
 
 void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
 
-    FILE *fp = fopen("rr","a");
+    FILE *fp = fopen("rr.txt","a");
 
     fprintf(fp,"%s\n\n","EXECUTION BY RR");
 
