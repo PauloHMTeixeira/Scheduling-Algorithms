@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define SIZE 100
-#define QUANTUM 10
+#define QUANTUM 25
 
 void schedule(char* name[],int array[],int array2[],int tamanho);
 
