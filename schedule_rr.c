@@ -76,7 +76,9 @@ void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
             break;
         }
         else{
-            if(aux_burst[i]!=0){
+            if(aux_burst[i]>0 && aux_burst[i]>=QUANTUM){
+                fprintf(fp,"[%s] %s %d %s\n",name[i],"for",QUANTUM,"units");
+            }if(aux_burst[i]>0 && aux_burst[i]<QUANTUM){
                 fprintf(fp,"[%s] %s %d %s\n",name[i],"for",aux_burst[i],"units");
             }
             if(aux_burst[i]<=QUANTUM && aux_burst[i]>0){
