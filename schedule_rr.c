@@ -55,19 +55,6 @@ void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
         aux_burst[i] = array_burst[i];
         aux_response[i] = QUANTUM*i;
     }
-
-    int turnaround = 0;
-    int waiting = 0;
-    int response = 0;
-    double turnaround_total = 0;
-    double waiting_total = 0;
-    double response_total = 0;
-
-    for(int i=0;i<tamanho;i++){
-        fprintf(fp,"[%s] %s %d %s\n",name[i],"for",array_burst[i],"units");
-    }
-    fprintf(fp,"\n%s\n","METRICS");
-
     double media_turnaround = 0.0;
     double media_waiting = 0.0;
     double media_response = 0.0;
@@ -76,6 +63,48 @@ void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
     int tempo=0;
     int marcador;
     int i=0;
+
+    int turnaround = 0;
+    int waiting = 0;
+    int response = 0;
+    double turnaround_total = 0;
+    double waiting_total = 0;
+    double response_total = 0;
+
+    while(1){
+        if(restante==tamanho){
+            break;
+        }
+        else{
+            if(aux_burst[i]!=0){
+                fprintf(fp,"[%s] %s %d %s\n",name[i],"for",aux_burst[i],"units");
+            }
+            if(aux_burst[i]<=QUANTUM && aux_burst[i]>0){
+                aux_burst[i]=0;
+                marcador=1;
+            }else if(aux_burst[i]>0){
+                aux_burst[i]-=QUANTUM;
+            }if(aux_burst[i]==0 && marcador==1){
+                restante++;
+                marcador=0;
+            }
+            i++;
+            if(tamanho==i){
+                i=0;
+            }
+        }
+    }
+
+    for(int i=0;i<tamanho;i++){
+        aux_burst[i] = array_burst[i];
+    }
+    
+    restante = 0;
+    i = 0;
+
+    
+    fprintf(fp,"\n%s\n","METRICS");
+
 
     while(1){
         if(restante==tamanho){
@@ -91,6 +120,7 @@ void schedule(char* name[],int array_priority[],int array_burst[],int tamanho){
                 aux_burst[i]-=QUANTUM;
                 tempo += QUANTUM;
             }if(aux_burst[i]==0 && marcador==1){
+               // printf("oi");
                 turnaround_total += tempo;
                 waiting=tempo-array_burst[i];
                 response+=tempo-array_burst[i];
