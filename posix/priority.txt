@@ -1,0 +1,45 @@
+EXECUTION BY PRIORITY
+
+
+METRICS
+
+
+[ ´ÏMóU]
+Turnaround time: 1305457792
+Waiting time: 0
+Response time: 0
+
+[ ´ÏMóU]
+Turnaround time: -1684051712
+Waiting time: 1305457792
+Response time: 1305457792
+
+[ ´ÏMóU]
+Turnaround time: -378593920
+Waiting time: -1684051712
+Response time: -1684051712
+
+[ ´ÏMóU]
+Turnaround time: 926863872
+Waiting time: -378593920
+Response time: -378593920
+
+[ ´ÏMóU]
+Turnaround time: -2062645632
+Waiting time: 926863872
+Response time: 926863872
+
+[ ´ÏMóU]
+Turnaround time: -757187840
+Waiting time: -2062645632
+Response time: -2062645632
+
+[ ´ÏMóU]
+Turnaround time: 548269952
+Waiting time: -757187840
+Response time: -757187840
+
+[ ´ÏMóU]
+Turnaround time: 1853727744
+Waiting time: 548269952
+Response time: 548269952
