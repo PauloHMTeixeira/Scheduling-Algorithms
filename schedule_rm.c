@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 void schedule(char *name[], int array_deadline[], int array_burst[], int tamanho)
 {
 
-  FILE *fp = fopen("rma3.txt", "a");
+  FILE *fp = fopen("rma1.txt", "a");
 
   fprintf(fp, "%s\n\n", "EXECUTION BY RM");
 
@@ -223,6 +223,16 @@ void schedule(char *name[], int array_deadline[], int array_burst[], int tamanho
         killedA += 1;
         killedB += 1;
       }
+      fprintf(fp, "\n\nLOST DEADLINES");
+      fprintf(fp, "\n[%s] %d", name[1], lostDeadLineA);
+      fprintf(fp, "\n[%s] %d", name[2], lostDeadLineB);
+      fprintf(fp, "\n\nCOMPLETE EXECUTION");
+      fprintf(fp, "\n[%s] %d", name[1], completedA);
+      fprintf(fp, "\n[%s] %d", name[2], completedB);
+      fprintf(fp, "\n\nKILLED");
+      fprintf(fp, "\n[%s] %d", name[1], killedA);
+      fprintf(fp, "\n[%s] %d", name[2], killedB);
+
       break;
     }
   }
