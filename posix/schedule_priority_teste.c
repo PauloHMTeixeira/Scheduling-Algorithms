@@ -25,6 +25,8 @@ int main(int argc, char *argv[]){
     
     int i = 0;
     int j = 0;
+    int aux0, aux2;
+    char *aux1;
 
     while (fgets(task,SIZE,in) != NULL) {
         temp = strdup(task);
